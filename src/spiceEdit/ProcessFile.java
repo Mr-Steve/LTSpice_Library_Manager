@@ -68,7 +68,7 @@ public class ProcessFile implements Runnable
 		return libType;
 	}
 
-	private static Bipolar procBjt(String text)
+	private static Bipolar procBjt(String text, Long line)
 	{
 		String holder = text;
 		Bipolar bjt = new Bipolar();
@@ -232,10 +232,11 @@ public class ProcessFile implements Runnable
 
 	}
 
-	private static Diode procDiode(String text)
+	private static Diode procDiode(String text, Long line)
 	{
 		String holder = text;
 		Diode dio = new Diode();
+		dio.setLINE(line);
 		holder = holder.replace("D(", "");
 		holder = holder.replace(")", "");
         String[] array = holder.split(" |=");
@@ -342,6 +343,43 @@ public class ProcessFile implements Runnable
 
 	}
 
+	private static Jfet procJfet(String text, Long line)
+	{
+		String holder = text;
+		Jfet jfet = new Jfet();
+
+		jfet.setLINE(line);
+		holder = holder.replace("NJF(", "");
+		holder = holder.replace("PJF(", "");
+		holder = holder.replace(")", "");
+        String[] array = holder.split(" |=");
+        for (int i = 0; i + 1 < array.length; i += 2)
+		{
+			if (array[i + 1].matches(sciRegEx))
+			{
+				array[i + 1] = MathMain.convertSciNot(array[i + 1]);
+			}
+
+			switch (array[i].toLowerCase())
+				{
+					case ".model":
+						jfet.setModel( array[i + 1]);
+						break;
+                    default:
+                        break;
+				}
+		}
+			
+		return jfet;
+	}
+	
+	private static Mosfet procMosfet(String text, Long line)
+	{
+		Mosfet mosfet = new Mosfet();
+		
+		return mosfet;
+	}
+	
 	/**
 	 * @param libType the libType to set
 	 */
@@ -416,26 +454,31 @@ public class ProcessFile implements Runnable
 		try
 		{
 			scanner = new Scanner(file, ENCODING.name());
+			long lineNumber = 0;
+			String text = "";
 			while (scanner.hasNextLine())
 			{
-				String text = formatLine(scanner.nextLine());
+				lineNumber += 1;
+				text = formatLine(scanner.nextLine());
 				if (text.contains(" D("))
 				{
 					setLibType(0);
-					dioList.add(procDiode(text));
+					dioList.add(procDiode(text, lineNumber));
 				}
 				else if ((text.contains(" NPN(") || text.contains(" PNP(")) && !text.contains("ako:"))
 				{
 					setLibType(1);
-					bjtList.add(procBjt(text));
+					bjtList.add(procBjt(text, lineNumber));
 				}
 				else if (text.contains(" NJF(") || text.contains(" PJF("))
 				{
 					setLibType(2);
+					jfetList.add(procJfet(text, lineNumber));
 				}
 				else if (text.contains(" VDMOS(") || text.contains(" NMOS(") || text.contains(" PMOS("))
 				{
 					setLibType(3);
+					mosList.add(procMosfet(text, lineNumber));
 				}
 			}
 		}

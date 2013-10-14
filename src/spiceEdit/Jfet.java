@@ -71,6 +71,8 @@ public class Jfet
 	 * Gate junction emission coefficient
 	 */
 	public String N;
+	
+	private Long LINE;
 
 	/**
 	 * Emission coefficient for ISR
@@ -679,6 +681,16 @@ public class Jfet
 		}
 		builder.append(']');
 		return builder.toString();
+	}
+
+	public Long getLINE()
+	{
+		return LINE;
+	}
+
+	public void setLINE(Long lINE)
+	{
+		LINE = lINE;
 	}
 
 }

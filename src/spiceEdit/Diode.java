@@ -156,7 +156,7 @@ public class Diode
 	/**
 	 * Line in the file
 	 */
-	private String LINE;
+	private Long LINE;
 
 	private Object[] parameters = { "Parameter Name", "Value", "Units", "Info" };
 
@@ -881,12 +881,12 @@ public class Diode
 		return builder.toString();
 	}
 
-	public String getLINE()
+	public Long getLINE()
 	{
 		return LINE;
 	}
 
-	public void setLINE(String lINE)
+	public void setLINE(Long lINE)
 	{
 		LINE = lINE;
 	}
