@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.launching.macosx.MacOSXType/Java SE 7 [1.7.0_40]"/>
+	<classpathentry kind="lib" path="/Users/adm/Downloads/jscience-4.3/jscience.jar" sourcepath="/Users/adm/Downloads/jscience-4.3 2/src">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/Users/adm/Downloads/jscience-4.3/api/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="forms-1.3.0.jar" sourcepath="forms-1.3.0-src.zip"/>
+	<classpathentry kind="lib" path="/Users/adm/Documents/workspace/LTSpice_Library_Editor/libs/jcommon-1.0.20/jcommon-1.0.20.jar"/>
+	<classpathentry kind="lib" path="/Users/adm/Documents/workspace/LTSpice_Library_Editor/libs/jfreechart-1.0.16/lib/jfreechart-1.0.16.jar" sourcepath="libs/jfreechart-1.0.16/source">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/Users/adm/Documents/workspace/LTSpice_Library_Editor/libs/jfreechart-1.0.16/javadoc/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
