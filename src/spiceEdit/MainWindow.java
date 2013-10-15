@@ -664,7 +664,7 @@ public class MainWindow
 	 */
 	private static double convertValue(double value, String type)
 	{
-		double converted = 0.0;
+		double converted = 0.00;
 		switch (type)
 			{
 				case V:
