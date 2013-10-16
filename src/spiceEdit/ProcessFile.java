@@ -3,10 +3,14 @@ package spiceEdit;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.attribute.FileAttribute;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import org.jfree.chart.util.AttrStringUtils;
 
 public class ProcessFile implements Runnable
 {
@@ -16,7 +20,36 @@ public class ProcessFile implements Runnable
 	private static final String sciRegEx = "\\d{0,}.{0,1}\\d{1,}[eE]-{0,1}\\d{1,}";
 
 	private static int libType;
-
+	
+	private static void saveFile(Path path)
+	{
+		
+	}
+	
+	private static boolean formatFile(Path path)
+	{
+		boolean temp = false;
+		try
+		{
+			String text = new String(Files.readAllBytes(path));
+			temp = text.contains("\n+");
+			if (temp)
+			{
+				text = text.replaceAll("\n+", " ");
+			//text = text.replaceAll(" .model", ".model");
+				workingFile = Files.createTempFile("", ".tmp");
+				Files.write(workingFile, text.getBytes());
+			}
+		}
+		catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return temp;
+		
+	}
+	
 	private static String formatLine(String text)
 	{
 		String holder = text;
@@ -239,6 +272,8 @@ public class ProcessFile implements Runnable
 		dio.setLINE(line);
 		holder = holder.replace("D(", "");
 		holder = holder.replace(")", "");
+		holder = holder.replaceAll("  ", " ");
+		//holder = holder.replace(" .model", ".model");
         String[] array = holder.split(" |=");
         for (int i = 0; i + 1 < array.length; i += 2)
 		{
@@ -249,6 +284,13 @@ public class ProcessFile implements Runnable
 
 			switch (array[i].toLowerCase())
 				{
+				case "":
+					if (i == 0)
+					{
+						i -= 1;
+					}
+					
+					break;
 					case ".model":
 						dio.setModel( array[i + 1]);
 						break;
@@ -398,7 +440,9 @@ public class ProcessFile implements Runnable
 
 	List<Mosfet> mosList;
 
-	Path file;
+	static Path file;
+	
+	static Path workingFile;
 
 	public ProcessFile()
 	{
@@ -408,6 +452,7 @@ public class ProcessFile implements Runnable
 	public ProcessFile(Path path)
 	{
 		file = path;
+		
 	}
 
 	/**
@@ -450,10 +495,19 @@ public class ProcessFile implements Runnable
 		bjtList = new ArrayList<Bipolar>();
 		jfetList = new ArrayList<Jfet>();
 		mosList = new ArrayList<Mosfet>();
-
+		boolean formatted = false;
 		try
 		{
-			scanner = new Scanner(file, ENCODING.name());
+			formatted = formatFile(file);
+			if (formatted == true)
+			{
+				scanner = new Scanner(workingFile, ENCODING.name());
+			}
+			else
+			{
+				scanner = new Scanner(file, ENCODING.name());
+			}
+			
 			long lineNumber = 0;
 			String text = "";
 			while (scanner.hasNextLine())

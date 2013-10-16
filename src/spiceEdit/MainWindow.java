@@ -61,87 +61,15 @@ import javax.swing.SwingWorker;
 
 public class MainWindow
 {
-	private static final String MOSFET = "Mosfet";
+	private static final String APP_TITLE = "Mr. Steve's LTSpice helper tool";
 
-	private static final String DIODES = "Diodes";
+	private static final String JFET_LOWERCASE = "jfet";
 
-	private static final String JFET = "Jfet";
+	private static final String MOS = "mos";
 
-	private static final String BIPOLAR = "Bipolar";
+	private static final String BJT = "bjt";
 
-	private static final String DONE = "Done";
-
-	private static final String SELECT_A_LIBRARY_TO_EDIT = "Select a library to edit";
-
-	private static final String _2_2_7_1 = "2, 2, 7, 1";
-
-	private static final String _4_6_RIGHT_DEFAULT = "4, 6, right, default";
-
-	private static final String _6_6_FILL_DEFAULT = "6, 6, fill, default";
-
-	private static final String PLEASE_SELECT_A_TYPE = "Please select a type";
-
-	private static final String XTI = "XTI";
-
-	private static final int TEN = 10;
-
-	private static final String NULL_STRING = "null";
-
-	private static final String AN_EXCEPTION_HAS_OCCURED = "An exception has occured.";
-
-	private static final String ARGUMENT_EXCEPTION = "Argument Exception";
-
-	private static final String A_P_S = "A/pS";
-
-	private static final String A_N_S = "A/nS";
-
-	private static final String A_U_S = "A/uS";
-
-	private static final String A_M_S = "A/mS";
-
-	private static final String A_S = "A/S";
-
-	private static final String P_S = "pS";
-
-	private static final String N_S = "nS";
-
-	private static final String U_S = "uS";
-
-	private static final String M_S = "mS";
-
-	private static final String S = "S";
-
-	private static final String P_F = "pF";
-
-	private static final String N_F = "nF";
-
-	private static final String U_F = "uF";
-
-	private static final String M_F = "mF";
-
-	private static final String F = "F";
-
-	private static final String P_A = "pA";
-
-	private static final String N_A = "nA";
-
-	private static final String U_A = "uA";
-
-	private static final String M_A = "mA";
-
-	private static final String A = "A";
-
-	private static final String P_V = "pV";
-
-	private static final String N_V = "nV";
-
-	private static final String U_V = "uV";
-
-	private static final String M_V = "mV";
-
-	private static final String V = "V";
-
-	private static final String CONVERT = "Convert";
+	private static final String DIODE = "diode";
 
 	private NumberFormat amountFormat;
 
@@ -163,7 +91,7 @@ public class MainWindow
 
 	private JButton btnCalcDioThreePointIs;
 
-    private JButton btnCalcDioXtiReverse;
+	private JButton btnCalcDioXtiReverse;
 
 	private JButton btnCalcXtiLarge;
 
@@ -241,7 +169,7 @@ public class MainWindow
 
 	private JComboBox<String> cmbCalcDioXtiReverseIr0;
 
-	private JComboBox<String> cmbCalcDioXtiReverseIr1;
+    private JComboBox<String> cmbCalcDioXtiReverseIr1;
 
 	private JComboBox<String> cmbCalcXtiLargeCurr;
 
@@ -429,6 +357,8 @@ public class MainWindow
 
 	private SwingWorker<Boolean, Integer> mosWorker;
 
+	private JPanel panelComponentEditor;
+
 	private JPanel panelAbout;
 
 	private JPanel panelCalcDioCjo;
@@ -449,8 +379,6 @@ public class MainWindow
 
 	private JTabbedPane panelCalculators;
 
-	private JScrollPane panelComponentEditor;
-
 	private JPanel panelConvert;
 
 	private Panel panelLibList;
@@ -459,13 +387,19 @@ public class MainWindow
 
 	private ProcessFile procFile;
 
-	private JTable tblComponentEdit;
+	private JTabbedPane tabsCalcBipolar;
 
 	private JTabbedPane tabsCalcDio;
 
 	private JTabbedPane tabsCalcDioIs;
 
 	private JTabbedPane tabsCalcDioXti;
+
+	private JTabbedPane tabsCalcJfet;
+
+	private JTabbedPane tabsCalcMosfet;
+
+	private JTable tblComponentEdit;
 
 	private JTextPane txtAbout;
 
@@ -585,26 +519,60 @@ public class MainWindow
 
 	private JTextField txtTrans;
 
+	private static final String _2_2_7_1 = "2, 2, 7, 1";
+
+	private static final String _4_6_RIGHT_DEFAULT = "4, 6, right, default";
+
 	private static final String _4H_SI_C_SILICON_CARBIDE = "4H-SiC silicon carbide";
+
+	private static final String _6_6_FILL_DEFAULT = "6, 6, fill, default";
 
 	private static final String _6H_SI_C_SILICON_CARBIDE = "6H-SiC silicon carbide";
 
+	private static final String A = "A";
+
+	private static final String A_M_S = "A/mS";
+
+	private static final String A_N_S = "A/nS";
+
+	private static final String A_P_S = "A/pS";
+
+	private static final String A_S = "A/S";
+
+	private static final String A_U_S = "A/uS";
+
 	private static final Object AMOUNTFORMAT = null;
+
+	private static final String AN_EXCEPTION_HAS_OCCURED = "An exception has occured.";
+
+	private static final String ARGUMENT_EXCEPTION = "Argument Exception";
+
+	private static final String BIPOLAR = "Bipolar";
 
 	// http://www.seas.upenn.edu/~jan/spice/PSpice_ReferenceguideOrCAD.pdf
 	private static String bjtLibPath;
 
 	private static final String CALCULATE = "Calculate";
 
+	private static final String CONVERT = "Convert";
+
 	private static final String CUSTOM = "Custom";
 
+	private static final String DIODES = "Diodes";
+
 	private static String dioLibPath;
+
+	private static final String DONE = "Done";
+
+	private static final String F = "F";
 
 	public static final double FC = 0.5;
 
 	private static final String GALLIUM_ARSENIDE = "Gallium Arsenide";
 
 	private static final String GERMANIUM = "Germanium";
+
+	private static final String JFET = "Jfet";
 
 	private static String jfetLibPath;
 
@@ -626,27 +594,68 @@ public class MainWindow
 
 	private static final String LOAD_LIBRARY = "Load Library";
 
+	private static final String M_A = "mA";
+
+	private static final String M_F = "mF";
+
+	private static final String M_S = "mS";
+
+	private static final String M_V = "mV";
+
 	private static MathDio math;
+
+	private static final String MOSFET = "Mosfet";
 
 	private static String mosLibPath;
 
 	private static JFreeChart myJFreeChart;
 
+	private static final String N_A = "nA";
+
+	private static final String N_F = "nF";
+
+	private static final String N_S = "nS";
+
+	private static final String N_V = "nV";
+
+	private static final String NULL_STRING = "null";
+
+	private static final String P_A = "pA";
+
+	private static final String P_F = "pF";
+
+	private static final String P_S = "pS";
+
+	private static final String P_V = "pV";
+
+	private static final String PLEASE_SELECT_A_TYPE = "Please select a type";
+
+	private static final String S = "S";
+
 	private static final String SAVE = "Save";
 
 	private static final String SCHOTTKY_BARRIER = "Schottky Barrier";
+
+	private static final String SELECT_A_LIBRARY_TO_EDIT = "Select a library to edit";
 
 	private static final String SELENIUM = "Selenium";
 
 	private static final String SILICON = "Silicon";
 
+	private static final int TEN = 10;
+
 	private static final String TYPE_SELECTION = "Type Selection";
-	private JTabbedPane tabsCalcBipolar;
-	private JTabbedPane tabsCalcJfet;
-	private JTabbedPane tabsCalcMosfet;
-	private JButton btnNewButton;
-	private ChartPanel chartPanel;
-	private JPanel panel;
+	private static final String U_A = "uA";
+	private static final String U_F = "uF";
+	private static final String U_S = "uS";
+	private static final String U_V = "uV";
+	private static final String V = "V";
+	private static final String XTI = "XTI";
+	private JLabel lblComponentEditor;
+	private JScrollPane scrollPane;
+	private JTable table;
+	private JButton btnDioNew;
+	private JButton btnComponentEditSave;
 
 	/**
 	 * Create the application.
@@ -1089,19 +1098,20 @@ public class MainWindow
 	{
 		prefs = Preferences.userRoot().node(this.getClass().getName());
 		MainWindow.math = new MathDio();
-		MainWindow.dioLibPath = loadPreference("diode");
-		MainWindow.bjtLibPath = loadPreference("bjt");
-		MainWindow.jfetLibPath = loadPreference("jfet");
-		MainWindow.mosLibPath = loadPreference("mos");
+		MainWindow.dioLibPath = loadPreference(DIODE);
+		MainWindow.bjtLibPath = loadPreference(BJT);
+		MainWindow.jfetLibPath = loadPreference(JFET_LOWERCASE);
+		MainWindow.mosLibPath = loadPreference(MOS);
 		amountFormat = NumberFormat.getNumberInstance();
 
 		fc = new JFileChooser();
 		frmMrStevesLtspice = new JFrame();
-		frmMrStevesLtspice.setTitle("Mr. Steve's LTSpice helper tool");
+		frmMrStevesLtspice.setTitle(APP_TITLE);
 		frmMrStevesLtspice.addComponentListener(new ComponentAdapter() {
 			@Override
 			public void componentResized(ComponentEvent e)
 			{
+				// TODO: get rid of this by setting the all to form layouts
 				// list.setMinimumSize(libListPane.getMinimumSize());
 				// list.setMaximumSize(libListPane.getMaximumSize());
 				final Dimension dim = panelLibList.getSize();
@@ -1236,7 +1246,7 @@ public class MainWindow
 		});
 		panelLibSelect.add(btnLoadJfet, "1, 11, center, default");
 		btnLoadJfet.setEnabled(false);
-		if (MainWindow.jfetLibPath != NULL_STRING)
+		if (!MainWindow.jfetLibPath.equalsIgnoreCase(NULL_STRING))
 		{
 			txtJfet.setText(MainWindow.jfetLibPath);
 			btnLoadJfet.setEnabled(true);
@@ -1271,7 +1281,7 @@ public class MainWindow
 		});
 		panelLibSelect.add(btnLoadMos, "1, 15, center, default");
 		btnLoadMos.setEnabled(false);
-		if (MainWindow.mosLibPath != NULL_STRING)
+		if (!MainWindow.mosLibPath.equalsIgnoreCase(NULL_STRING))
 		{
 			txtMosfet.setText(MainWindow.mosLibPath);
 			btnLoadMos.setEnabled(true);
@@ -1281,33 +1291,13 @@ public class MainWindow
 
 		panelLibList = new Panel();
 		tabsPrimary.addTab("Library List", null, panelLibList, null);
-		panelLibList.setLayout(null);
+		panelLibList.setLayout(new FormLayout(new ColumnSpec[] {
+				ColumnSpec.decode("429px:grow"),},
+			new RowSpec[] {
+				RowSpec.decode("304px:grow"),}));
 
 		libTabPane = new JTabbedPane(SwingConstants.TOP);
-		libTabPane.setBounds(0, 0, 429, 304);
-		panelLibList.add(libTabPane);
-
-		dioPanel = new JPanel();
-		libTabPane.addTab(DIODES, null, dioPanel, null);
-		dioPanel.setLayout(new BorderLayout(0, 0));
-
-		dioAwtList = new java.awt.List();
-		dioAwtList.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e)
-			{
-				final int index = dioAwtList.getSelectedIndex();
-				tblComponentEdit.setModel(dioList.get(index).getTableModel());
-				// table = new JTable(dioList.get(index).getData(),
-				// dioList.get(index).getParameters());
-
-			}
-		});
-
-		dioPanel.add(dioAwtList);
-
-		btnDioSave = new JButton(MainWindow.SAVE);
-		dioPanel.add(btnDioSave, BorderLayout.SOUTH);
+		panelLibList.add(libTabPane, "1, 1, fill, fill");
 
 		bjtPanel = new JPanel();
 		libTabPane.addTab(BIPOLAR, null, bjtPanel, null);
@@ -1339,22 +1329,75 @@ public class MainWindow
 		button_2 = new JButton(MainWindow.SAVE);
 		mosPanel.add(button_2, BorderLayout.SOUTH);
 		
-		panel = new JPanel();
-		tabsPrimary.addTab("New tab", null, panel, null);
-
-		panelComponentEditor = new JScrollPane();
-		tabsPrimary.addTab("Component editor", null, panelComponentEditor, null);
-		
-		chartPanel = new ChartPanel((JFreeChart) null);
-		panelComponentEditor.setRowHeaderView(chartPanel);
-		
-				tblComponentEdit = new JTable();
-				chartPanel.add(tblComponentEdit);
-				tblComponentEdit.setFillsViewportHeight(true);
-				tblComponentEdit.setCellSelectionEnabled(true);
+				dioPanel = new JPanel();
+				libTabPane.addTab(DIODES, null, dioPanel, null);
 				
-				btnNewButton = new JButton("New button");
-				chartPanel.add(btnNewButton);
+						dioAwtList = new java.awt.List();
+						dioAwtList.addMouseListener(new MouseAdapter() {
+							@Override
+							public void mouseClicked(MouseEvent e)
+							{
+								final int index = dioAwtList.getSelectedIndex();
+								tblComponentEdit.setModel(dioList.get(index).getTableModel());
+								// table = new JTable(dioList.get(index).getData(),
+								// dioList.get(index).getParameters());
+
+							}
+						});
+						dioPanel.setLayout(new FormLayout(new ColumnSpec[] {
+								FormFactory.DEFAULT_COLSPEC,
+								FormFactory.RELATED_GAP_COLSPEC,
+								FormFactory.DEFAULT_COLSPEC,
+								FormFactory.RELATED_GAP_COLSPEC,
+								ColumnSpec.decode("default:grow"),},
+							new RowSpec[] {
+								RowSpec.decode("517px:grow"),
+								RowSpec.decode("29px"),}));
+						
+								dioPanel.add(dioAwtList, "1, 1, 5, 1, fill, fill");
+								
+								btnDioNew = new JButton("New Diode");
+								dioPanel.add(btnDioNew, "1, 2, default, bottom");
+								
+										btnDioSave = new JButton(MainWindow.SAVE);
+										dioPanel.add(btnDioSave, "3, 2, fill, top");
+		
+		panelComponentEditor = new JPanel();
+		tabsPrimary.addTab("Component Editor", null, panelComponentEditor, null);
+		panelComponentEditor.setLayout(new FormLayout(new ColumnSpec[] {
+				FormFactory.RELATED_GAP_COLSPEC,
+				FormFactory.DEFAULT_COLSPEC,
+				FormFactory.RELATED_GAP_COLSPEC,
+				FormFactory.DEFAULT_COLSPEC,
+				FormFactory.RELATED_GAP_COLSPEC,
+				ColumnSpec.decode("default:grow"),
+				FormFactory.RELATED_GAP_COLSPEC,
+				FormFactory.DEFAULT_COLSPEC,},
+			new RowSpec[] {
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,
+				FormFactory.RELATED_GAP_ROWSPEC,
+				RowSpec.decode("default:grow"),
+				FormFactory.RELATED_GAP_ROWSPEC,
+				FormFactory.DEFAULT_ROWSPEC,}));
+		
+		lblComponentEditor = new JLabel("Component Editor");
+		panelComponentEditor.add(lblComponentEditor, "4, 2");
+		
+		scrollPane = new JScrollPane();
+		panelComponentEditor.add(scrollPane, "4, 4, 3, 3, fill, fill");
+		
+		tblComponentEdit = new JTable();
+		scrollPane.setViewportView(tblComponentEdit);
+		
+		btnComponentEditSave = new JButton("Save");
+		btnComponentEditSave.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		panelComponentEditor.add(btnComponentEditSave, "4, 8");
 
 		panelCalculators = new JTabbedPane(SwingConstants.TOP);
 		tabsPrimary.addTab("Calculators", null, panelCalculators, null);
@@ -2241,7 +2284,7 @@ public class MainWindow
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				if (txtCalcDioXtiReverseEg.getText() == TYPE_SELECTION)
+				if (txtCalcDioXtiReverseEg.getText().equalsIgnoreCase(TYPE_SELECTION))
 				{
 					JOptionPane.showMessageDialog(frmMrStevesLtspice, "Please provide an energy gap",
 							ARGUMENT_EXCEPTION, 1);
@@ -2733,28 +2776,28 @@ public class MainWindow
 					createDioWorker();
 					dioWorker.execute();
 					txtDio.setText(filePath.toString());
-					storePreference("diode", filePath.toString());
+					storePreference(DIODE, filePath.toString());
 					break;
 				case 1:
 					bjtList = procFile.getBjtList();
 					createBjtWorker();
 					bjtWorker.execute();
 					txtTrans.setText(filePath.toString());
-					storePreference("bjt", filePath.toString());
+					storePreference(BJT, filePath.toString());
 					break;
 				case 2:
 					jfetList = procFile.getJfetList();
 					createJfetWorker();
 					jfetWorker.execute();
 					txtJfet.setText(filePath.toString());
-					storePreference("jfet", filePath.toString());
+					storePreference(JFET_LOWERCASE, filePath.toString());
 					break;
 				case 3:
 					mosList = procFile.getMosList();
 					createMosWorker();
 					mosWorker.execute();
 					txtMosfet.setText(filePath.toString());
-					storePreference("mos", filePath.toString());
+					storePreference(MOS, filePath.toString());
 					break;
 					default:
 						break;
