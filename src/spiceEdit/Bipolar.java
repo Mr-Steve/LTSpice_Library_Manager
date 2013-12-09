@@ -587,7 +587,7 @@ public class Bipolar
 	 */
 	public void setBF(String bF)
 	{
-        BF = bF;
+		BF = bF;
 	}
 
 	/**
@@ -595,7 +595,7 @@ public class Bipolar
 	 */
 	public void setBR(String bR)
 	{
-        BR = bR;
+		BR = bR;
 	}
 
 	/**
@@ -603,7 +603,7 @@ public class Bipolar
 	 */
 	public void setBVcbo(String bVcbo)
 	{
-        BVcbo = bVcbo;
+		BVcbo = bVcbo;
 	}
 
 	/**
@@ -611,7 +611,7 @@ public class Bipolar
 	 */
 	public void setCJC(String cJC)
 	{
-        CJC = cJC;
+		CJC = cJC;
 	}
 
 	/**
@@ -619,7 +619,7 @@ public class Bipolar
 	 */
 	public void setCJE(String cJE)
 	{
-        CJE = cJE;
+		CJE = cJE;
 	}
 
 	/**
@@ -627,7 +627,7 @@ public class Bipolar
 	 */
 	public void setCJS(String cJS)
 	{
-        CJS = cJS;
+		CJS = cJS;
 	}
 
 	/**
@@ -635,7 +635,7 @@ public class Bipolar
 	 */
 	public void setEG(String eG)
 	{
-        EG = eG;
+		EG = eG;
 	}
 
 	/**
@@ -643,7 +643,7 @@ public class Bipolar
 	 */
 	public void setFC(String fC)
 	{
-        FC = fC;
+		FC = fC;
 	}
 
 	/**
@@ -651,7 +651,7 @@ public class Bipolar
 	 */
 	public void setIKF(String iKF)
 	{
-        IKF = iKF;
+		IKF = iKF;
 	}
 
 	/**
@@ -659,7 +659,7 @@ public class Bipolar
 	 */
 	public void setIKR(String iKR)
 	{
-        IKR = iKR;
+		IKR = iKR;
 	}
 
 	/**
@@ -667,7 +667,7 @@ public class Bipolar
 	 */
 	public void setIS(String iS)
 	{
-        IS = iS;
+		IS = iS;
 	}
 
 	/**
@@ -675,7 +675,7 @@ public class Bipolar
 	 */
 	public void setISC(String iSC)
 	{
-        ISC = iSC;
+		ISC = iSC;
 	}
 
 	/**
@@ -683,7 +683,7 @@ public class Bipolar
 	 */
 	public void setISE(String iSE)
 	{
-        ISE = iSE;
+		ISE = iSE;
 	}
 
 	/**
@@ -691,7 +691,7 @@ public class Bipolar
 	 */
 	public void setISS(String iSS)
 	{
-        ISS = iSS;
+		ISS = iSS;
 	}
 
 	/**
@@ -699,7 +699,7 @@ public class Bipolar
 	 */
 	public void setITF(String iTF)
 	{
-        ITF = iTF;
+		ITF = iTF;
 	}
 
 	/**
@@ -707,7 +707,7 @@ public class Bipolar
 	 */
 	public void setKF(String kF)
 	{
-        KF = kF;
+		KF = kF;
 	}
 
 	/**
@@ -715,7 +715,7 @@ public class Bipolar
 	 */
 	public void setMFG(String mFG)
 	{
-        MFG = mFG;
+		MFG = mFG;
 	}
 
 	/**
@@ -723,7 +723,7 @@ public class Bipolar
 	 */
 	public void setMJC(String mJC)
 	{
-        MJC = mJC;
+		MJC = mJC;
 	}
 
 	/**
@@ -731,7 +731,7 @@ public class Bipolar
 	 */
 	public void setMJE(String mJE)
 	{
-        MJE = mJE;
+		MJE = mJE;
 	}
 
 	/**
@@ -739,7 +739,7 @@ public class Bipolar
 	 */
 	public void setMJS(String mJS)
 	{
-        MJS = mJS;
+		MJS = mJS;
 	}
 
 	/**
@@ -755,7 +755,7 @@ public class Bipolar
 	 */
 	public void setNC(String nC)
 	{
-        NC = nC;
+		NC = nC;
 	}
 
 	/**
@@ -763,7 +763,7 @@ public class Bipolar
 	 */
 	public void setNE(String nE)
 	{
-        NE = nE;
+		NE = nE;
 	}
 
 	/**
@@ -771,7 +771,7 @@ public class Bipolar
 	 */
 	public void setNF(String nF)
 	{
-        NF = nF;
+		NF = nF;
 	}
 
 	/**
@@ -779,7 +779,7 @@ public class Bipolar
 	 */
 	public void setNR(String nR)
 	{
-        NR = nR;
+		NR = nR;
 	}
 
 	/**
@@ -787,7 +787,7 @@ public class Bipolar
 	 */
 	public void setNS(String nS)
 	{
-        NS = nS;
+		NS = nS;
 	}
 
 	/**
@@ -795,7 +795,7 @@ public class Bipolar
 	 */
 	public void setPTF(String pTF)
 	{
-        PTF = pTF;
+		PTF = pTF;
 	}
 
 	/**
@@ -803,7 +803,7 @@ public class Bipolar
 	 */
 	public void setRB(String rB)
 	{
-        RB = rB;
+		RB = rB;
 	}
 
 	/**
@@ -811,7 +811,7 @@ public class Bipolar
 	 */
 	public void setRBM(String rBM)
 	{
-        RBM = rBM;
+		RBM = rBM;
 	}
 
 	/**
@@ -819,7 +819,7 @@ public class Bipolar
 	 */
 	public void setRC(String rC)
 	{
-        RC = rC;
+		RC = rC;
 	}
 
 	/**
@@ -827,7 +827,7 @@ public class Bipolar
 	 */
 	public void setRE(String rE)
 	{
-        RE = rE;
+		RE = rE;
 	}
 
 	/**
@@ -835,7 +835,7 @@ public class Bipolar
 	 */
 	public void setTF(String tF)
 	{
-        TF = tF;
+		TF = tF;
 	}
 
 	/**
@@ -843,7 +843,7 @@ public class Bipolar
 	 */
 	public void setTNOM(String tNOM)
 	{
-        TNOM = tNOM;
+		TNOM = tNOM;
 	}
 
 	/**
@@ -851,7 +851,7 @@ public class Bipolar
 	 */
 	public void setTR(String tR)
 	{
-        TR = tR;
+		TR = tR;
 	}
 
 	/**
@@ -867,7 +867,7 @@ public class Bipolar
 	 */
 	public void setVAF(String vAF)
 	{
-        VAF = vAF;
+		VAF = vAF;
 	}
 
 	/**
@@ -875,7 +875,7 @@ public class Bipolar
 	 */
 	public void setVAR(String vAR)
 	{
-        VAR = vAR;
+		VAR = vAR;
 	}
 
 	/**
@@ -883,7 +883,7 @@ public class Bipolar
 	 */
 	public void setVJC(String vJC)
 	{
-        VJC = vJC;
+		VJC = vJC;
 	}
 
 	/**
@@ -891,7 +891,7 @@ public class Bipolar
 	 */
 	public void setVJE(String vJE)
 	{
-        VJE = vJE;
+		VJE = vJE;
 	}
 
 	/**
@@ -899,7 +899,7 @@ public class Bipolar
 	 */
 	public void setVJS(String vJS)
 	{
-        VJS = vJS;
+		VJS = vJS;
 	}
 
 	/**
@@ -907,7 +907,7 @@ public class Bipolar
 	 */
 	public void setVTF(String vTF)
 	{
-        VTF = vTF;
+		VTF = vTF;
 	}
 
 	/**
@@ -915,7 +915,7 @@ public class Bipolar
 	 */
 	public void setXTB(String xTB)
 	{
-        XTB = xTB;
+		XTB = xTB;
 	}
 
 	/**
@@ -923,7 +923,7 @@ public class Bipolar
 	 */
 	public void setXTF(String xTF)
 	{
-        XTF = xTF;
+		XTF = xTF;
 	}
 
 	/**
@@ -931,7 +931,7 @@ public class Bipolar
 	 */
 	public void setXTI(String xTI)
 	{
-        XTI = xTI;
+		XTI = xTI;
 	}
 
 	/*

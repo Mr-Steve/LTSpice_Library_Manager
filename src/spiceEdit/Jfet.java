@@ -63,6 +63,8 @@ public class Jfet
 	 */
 	public String LAMBDA;
 
+	private Long LINE;
+
 	public String MFG;
 
 	public String model;
@@ -71,8 +73,6 @@ public class Jfet
 	 * Gate junction emission coefficient
 	 */
 	public String N;
-	
-	private Long LINE;
 
 	/**
 	 * Emission coefficient for ISR
@@ -124,7 +124,7 @@ public class Jfet
 	/**
 	 * @return the aF
 	 */
-	public  String getAF()
+	public String getAF()
 	{
 		return AF;
 	}
@@ -132,7 +132,7 @@ public class Jfet
 	/**
 	 * @return the aLPHA
 	 */
-	public  String getALPHA()
+	public String getALPHA()
 	{
 		return ALPHA;
 	}
@@ -140,7 +140,7 @@ public class Jfet
 	/**
 	 * @return the b
 	 */
-	public  String getB()
+	public String getB()
 	{
 		return B;
 	}
@@ -148,7 +148,7 @@ public class Jfet
 	/**
 	 * @return the bETA
 	 */
-	public  String getBETA()
+	public String getBETA()
 	{
 		return BETA;
 	}
@@ -156,7 +156,7 @@ public class Jfet
 	/**
 	 * @return the bETATCE
 	 */
-	public  String getBETATCE()
+	public String getBETATCE()
 	{
 		return BETATCE;
 	}
@@ -164,7 +164,7 @@ public class Jfet
 	/**
 	 * @return the cGD
 	 */
-	public  String getCGD()
+	public String getCGD()
 	{
 		return CGD;
 	}
@@ -172,7 +172,7 @@ public class Jfet
 	/**
 	 * @return the cGS
 	 */
-	public  String getCGS()
+	public String getCGS()
 	{
 		return CGS;
 	}
@@ -180,7 +180,7 @@ public class Jfet
 	/**
 	 * @return the fC
 	 */
-	public  String getFC()
+	public String getFC()
 	{
 		return FC;
 	}
@@ -188,7 +188,7 @@ public class Jfet
 	/**
 	 * @return the iS
 	 */
-	public  String getIS()
+	public String getIS()
 	{
 		return IS;
 	}
@@ -196,7 +196,7 @@ public class Jfet
 	/**
 	 * @return the iSR
 	 */
-	public  String getISR()
+	public String getISR()
 	{
 		return ISR;
 	}
@@ -204,7 +204,7 @@ public class Jfet
 	/**
 	 * @return the kF
 	 */
-	public  String getKF()
+	public String getKF()
 	{
 		return KF;
 	}
@@ -212,15 +212,20 @@ public class Jfet
 	/**
 	 * @return the lAMBDA
 	 */
-	public  String getLAMBDA()
+	public String getLAMBDA()
 	{
 		return LAMBDA;
+	}
+
+	public Long getLINE()
+	{
+		return LINE;
 	}
 
 	/**
 	 * @return the mFG
 	 */
-	public  String getMFG()
+	public String getMFG()
 	{
 		return MFG;
 	}
@@ -228,7 +233,7 @@ public class Jfet
 	/**
 	 * @return the model
 	 */
-	public  String getModel()
+	public String getModel()
 	{
 		return model;
 	}
@@ -236,7 +241,7 @@ public class Jfet
 	/**
 	 * @return the n
 	 */
-	public  String getN()
+	public String getN()
 	{
 		return N;
 	}
@@ -244,7 +249,7 @@ public class Jfet
 	/**
 	 * @return the nR
 	 */
-	public  String getNR()
+	public String getNR()
 	{
 		return NR;
 	}
@@ -252,7 +257,7 @@ public class Jfet
 	/**
 	 * @return the pB
 	 */
-	public  String getPB()
+	public String getPB()
 	{
 		return PB;
 	}
@@ -260,7 +265,7 @@ public class Jfet
 	/**
 	 * @return the rD
 	 */
-	public  String getRD()
+	public String getRD()
 	{
 		return RD;
 	}
@@ -268,7 +273,7 @@ public class Jfet
 	/**
 	 * @return the rS
 	 */
-	public  String getRS()
+	public String getRS()
 	{
 		return RS;
 	}
@@ -276,7 +281,7 @@ public class Jfet
 	/**
 	 * @return the tNOM
 	 */
-	public  String getTNOM()
+	public String getTNOM()
 	{
 		return TNOM;
 	}
@@ -284,7 +289,7 @@ public class Jfet
 	/**
 	 * @return the tYPE
 	 */
-	public  String getTYPE()
+	public String getTYPE()
 	{
 		return TYPE;
 	}
@@ -292,7 +297,7 @@ public class Jfet
 	/**
 	 * @return the vK
 	 */
-	public  String getVK()
+	public String getVK()
 	{
 		return VK;
 	}
@@ -300,7 +305,7 @@ public class Jfet
 	/**
 	 * @return the vTO
 	 */
-	public  String getVTO()
+	public String getVTO()
 	{
 		return VTO;
 	}
@@ -308,7 +313,7 @@ public class Jfet
 	/**
 	 * @return the vTOTC
 	 */
-	public  String getVTOTC()
+	public String getVTOTC()
 	{
 		return VTOTC;
 	}
@@ -316,7 +321,7 @@ public class Jfet
 	/**
 	 * @return the xTI
 	 */
-	public  String getXTI()
+	public String getXTI()
 	{
 		return XTI;
 	}
@@ -324,7 +329,7 @@ public class Jfet
 	/**
 	 * @param aF the aF to set
 	 */
-	public  void setAF(String aF)
+	public void setAF(String aF)
 	{
 		AF = aF;
 	}
@@ -332,7 +337,7 @@ public class Jfet
 	/**
 	 * @param aLPHA the aLPHA to set
 	 */
-	public  void setALPHA(String aLPHA)
+	public void setALPHA(String aLPHA)
 	{
 		ALPHA = aLPHA;
 	}
@@ -340,7 +345,7 @@ public class Jfet
 	/**
 	 * @param b the b to set
 	 */
-	public  void setB(String b)
+	public void setB(String b)
 	{
 		B = b;
 	}
@@ -348,7 +353,7 @@ public class Jfet
 	/**
 	 * @param bETA the bETA to set
 	 */
-	public  void setBETA(String bETA)
+	public void setBETA(String bETA)
 	{
 		BETA = bETA;
 	}
@@ -356,7 +361,7 @@ public class Jfet
 	/**
 	 * @param bETATCE the bETATCE to set
 	 */
-	public  void setBETATCE(String bETATCE)
+	public void setBETATCE(String bETATCE)
 	{
 		BETATCE = bETATCE;
 	}
@@ -364,7 +369,7 @@ public class Jfet
 	/**
 	 * @param cGD the cGD to set
 	 */
-	public  void setCGD(String cGD)
+	public void setCGD(String cGD)
 	{
 		CGD = cGD;
 	}
@@ -372,7 +377,7 @@ public class Jfet
 	/**
 	 * @param cGS the cGS to set
 	 */
-	public  void setCGS(String cGS)
+	public void setCGS(String cGS)
 	{
 		CGS = cGS;
 	}
@@ -380,7 +385,7 @@ public class Jfet
 	/**
 	 * @param fC the fC to set
 	 */
-	public  void setFC(String fC)
+	public void setFC(String fC)
 	{
 		FC = fC;
 	}
@@ -388,7 +393,7 @@ public class Jfet
 	/**
 	 * @param iS the iS to set
 	 */
-	public  void setIS(String iS)
+	public void setIS(String iS)
 	{
 		IS = iS;
 	}
@@ -396,7 +401,7 @@ public class Jfet
 	/**
 	 * @param iSR the iSR to set
 	 */
-	public  void setISR(String iSR)
+	public void setISR(String iSR)
 	{
 		ISR = iSR;
 	}
@@ -404,7 +409,7 @@ public class Jfet
 	/**
 	 * @param kF the kF to set
 	 */
-	public  void setKF(String kF)
+	public void setKF(String kF)
 	{
 		KF = kF;
 	}
@@ -412,15 +417,20 @@ public class Jfet
 	/**
 	 * @param lAMBDA the lAMBDA to set
 	 */
-	public  void setLAMBDA(String lAMBDA)
+	public void setLAMBDA(String lAMBDA)
 	{
 		LAMBDA = lAMBDA;
+	}
+
+	public void setLINE(Long lINE)
+	{
+		LINE = lINE;
 	}
 
 	/**
 	 * @param mFG the mFG to set
 	 */
-	public  void setMFG(String mFG)
+	public void setMFG(String mFG)
 	{
 		MFG = mFG;
 	}
@@ -428,7 +438,7 @@ public class Jfet
 	/**
 	 * @param model the model to set
 	 */
-	public  void setModel(String model)
+	public void setModel(String model)
 	{
 		this.model = model;
 	}
@@ -436,7 +446,7 @@ public class Jfet
 	/**
 	 * @param n the n to set
 	 */
-	public  void setN(String n)
+	public void setN(String n)
 	{
 		N = n;
 	}
@@ -444,7 +454,7 @@ public class Jfet
 	/**
 	 * @param nR the nR to set
 	 */
-	public  void setNR(String nR)
+	public void setNR(String nR)
 	{
 		NR = nR;
 	}
@@ -452,7 +462,7 @@ public class Jfet
 	/**
 	 * @param pB the pB to set
 	 */
-	public  void setPB(String pB)
+	public void setPB(String pB)
 	{
 		PB = pB;
 	}
@@ -460,7 +470,7 @@ public class Jfet
 	/**
 	 * @param rD the rD to set
 	 */
-	public  void setRD(String rD)
+	public void setRD(String rD)
 	{
 		RD = rD;
 	}
@@ -468,7 +478,7 @@ public class Jfet
 	/**
 	 * @param rS the rS to set
 	 */
-	public  void setRS(String rS)
+	public void setRS(String rS)
 	{
 		RS = rS;
 	}
@@ -476,7 +486,7 @@ public class Jfet
 	/**
 	 * @param tNOM the tNOM to set
 	 */
-	public  void setTNOM(String tNOM)
+	public void setTNOM(String tNOM)
 	{
 		TNOM = tNOM;
 	}
@@ -484,7 +494,7 @@ public class Jfet
 	/**
 	 * @param tYPE the tYPE to set
 	 */
-	public  void setTYPE(String tYPE)
+	public void setTYPE(String tYPE)
 	{
 		TYPE = tYPE;
 	}
@@ -492,7 +502,7 @@ public class Jfet
 	/**
 	 * @param vK the vK to set
 	 */
-	public  void setVK(String vK)
+	public void setVK(String vK)
 	{
 		VK = vK;
 	}
@@ -500,7 +510,7 @@ public class Jfet
 	/**
 	 * @param vTO the vTO to set
 	 */
-	public  void setVTO(String vTO)
+	public void setVTO(String vTO)
 	{
 		VTO = vTO;
 	}
@@ -508,7 +518,7 @@ public class Jfet
 	/**
 	 * @param vTOTC the vTOTC to set
 	 */
-	public  void setVTOTC(String vTOTC)
+	public void setVTOTC(String vTOTC)
 	{
 		VTOTC = vTOTC;
 	}
@@ -516,7 +526,7 @@ public class Jfet
 	/**
 	 * @param xTI the xTI to set
 	 */
-	public  void setXTI(String xTI)
+	public void setXTI(String xTI)
 	{
 		XTI = xTI;
 	}
@@ -681,16 +691,6 @@ public class Jfet
 		}
 		builder.append(']');
 		return builder.toString();
-	}
-
-	public Long getLINE()
-	{
-		return LINE;
-	}
-
-	public void setLINE(Long lINE)
-	{
-		LINE = lINE;
 	}
 
 }

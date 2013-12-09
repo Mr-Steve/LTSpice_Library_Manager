@@ -14,69 +14,9 @@ public class Diode
 	private static final String TOSTRINGCOMMA = ", ";
 
 	/**
-	 * The diode model.
-	 */
-	private String model;
-
-	/**
-	 * Saturation Current. Is
-	 */
-	private String IS;
-
-	/**
-	 * Parasitic resistance Rs
-	 */
-	private String RS;
-
-	/**
-	 * Emission coefficient n
-	 */
-	private String N;
-
-	/**
-	 * Transit time Td
-	 */
-	private String TT;
-
-	/**
-	 * Zero-bias junction capacitance CD(0)
-	 */
-	private String CJO;
-
-	/**
-	 * Junction potential φ0
-	 */
-	private String VJ;
-
-	/**
-	 * Junction grading coefficient m
-	 */
-	private String M;
-
-	/**
-	 * Activation energy Si: 1.11 Ge: 0.67 Schottky: 0.69 Eg
-	 */
-	private String EG;
-
-	/**
-	 * IS temperature exponent pi
-	 */
-	private String XTI;
-
-	/**
-	 * Flicker noise coefficient kf
-	 */
-	private String KF;
-
-	/**
 	 * Flicker noise exponent af
 	 */
 	private String AF;
-
-	/**
-	 * Forward bias depletion capacitance coefficient FC
-	 */
-	private String FC;
 
 	/**
 	 * Reverse breakdown voltage BV
@@ -84,24 +24,29 @@ public class Diode
 	private String BV;
 
 	/**
-	 * Reverse breakdown current IBV
+	 * Zero-bias junction capacitance CD(0)
 	 */
-	private String IBV;
+	private String CJO;
 
 	/**
-	 * Parameter measurement temperature
+	 * Maximum power dissipation rating
 	 */
-	private String TNOM;
+	private String DISS;
 
 	/**
-	 * The manufacturer
+	 * Activation energy Si: 1.11 Ge: 0.67 Schottky: 0.69 Eg
 	 */
-	private String MFG;
+	private String EG;
 
 	/**
-	 * The diode type
+	 * Forward bias depletion capacitance coefficient FC
 	 */
-	private String type;
+	private String FC;
+
+	/**
+	 * Bottom junction leakage conductance
+	 */
+	private String GLEAK;
 
 	/**
 	 * Average current rating
@@ -109,14 +54,59 @@ public class Diode
 	private String IAVE;
 
 	/**
-	 * Peak voltage rating
+	 * Reverse breakdown current IBV
 	 */
-	private String VPK;
+	private String IBV;
+
+	/**
+	 * High-injection knee current
+	 */
+	private String IKF;
 
 	/**
 	 * Peak current rating
 	 */
 	private String IPK;
+
+	/**
+	 * Saturation Current. Is
+	 */
+	private String IS;
+
+	/**
+	 * Recombination current parameter
+	 */
+	private String ISR;
+
+	/**
+	 * Flicker noise coefficient kf
+	 */
+	private String KF;
+
+	/**
+	 * Line in the file
+	 */
+	private Long LINE;
+
+	/**
+	 * Junction grading coefficient m
+	 */
+	private String M;
+
+	/**
+	 * The manufacturer
+	 */
+	private String MFG;
+
+	/**
+	 * The diode model.
+	 */
+	private String model;
+
+	/**
+	 * Emission coefficient n
+	 */
+	private String N;
 
 	/**
 	 * Reverse breakdown ideality factor
@@ -128,20 +118,17 @@ public class Diode
 	 */
 	private String NR;
 
-	/**
-	 * High-injection knee current
-	 */
-	private String IKF;
+	private Object[] parameters = { "Parameter Name", "Value", "Units", "Info" };
 
 	/**
-	 * Recombination current parameter
+	 * Parasitic resistance Rs
 	 */
-	private String ISR;
+	private String RS;
 
 	/**
-	 * Maximum power dissipation rating
+	 * Parameter measurement temperature
 	 */
-	private String DISS;
+	private String TNOM;
 
 	/**
 	 * Temperature rise over ambient
@@ -149,68 +136,29 @@ public class Diode
 	private String TRISE;
 
 	/**
-	 * Bottom junction leakage conductance
+	 * Transit time Td
 	 */
-	private String GLEAK;
-	
+	private String TT;
+
 	/**
-	 * Line in the file
+	 * The diode type
 	 */
-	private Long LINE;
+	private String type;
 
-	private Object[] parameters = { "Parameter Name", "Value", "Units", "Info" };
+	/**
+	 * Junction potential φ0
+	 */
+	private String VJ;
 
-	public TableModel getTableModel()
-	{
+	/**
+	 * Peak voltage rating
+	 */
+	private String VPK;
 
-
-		Object[][] data = {
-				{ ".Model", model, "", "The model of the diode" },
-				{ "MFG", MFG, "", "The manufacturer" },
-				{ "Type", type, "", "The diode type" },
-				{ "TNOM", TNOM, "°C", "The temperature which parameters are measured" },
-				{ "IPK", IPK, "Amps", "Peak forward current rating. Take fomr datasheet" },
-				{ "VPK", VPK, "Volts", "Peak forward voltage rating. Take from datasheet" },
-				{ "BV", BV, "Volts", "Reverse breakdown knee voltage. Datasheet VRM or Vbr (Vz for zener)" },
-				{ "CJO", CJO, "Farads", "Zero-bias p-n capacitance. Datasheet Cj or Ctot.  Calculator available." },
-				{ "IBV", IBV, "Amps", "Maximum leakage current. Datasheet ~10*Ir (or Ibr or Izk for zener)" },
-				{ "M", M, "",
-						"Range of .25 to .45. Low V zeners ~.25, 50-100V .33, <100V .45. Default .5.  Calculator available." },
-				{
-						"TT",
-						TT,
-						"Seconds",
-						"Transit time. (use ms, ns, us) ~τD =  QRR/IF (QRR=reverse recovery stored charge, IF=forward current. Calculator available." },
-				{ "EG", EG, "Electron Volt",
-						"standard value of 1.1 eV, while it's 0.7 eV for Schottky diode and 0.67 eV for germanium diodes." },
-				{ "N", N, "",
-						"The N value ranges between 1.0 and about 2.0. Adjust to match I-V curvature.  Calculator available." },
-				{ "IS", IS, "Amps", "Saturation current. Calculator available." },
-				{ "RS", RS, "Ohms", "Parasitic resistance. Calculator available." },
-				{ "VJ", VJ, "Volts", "Junction potential. Calculator available." },
-				{ "XTI", XTI, "", "IS temperature exponent. Calculator available." },
-				{ "AF", AF, "", "Default 1. No known calculation from datasheet." },
-				{ "DISS", DISS, "Watts", "Maximum power dissipation rating." },
-				{ "FC", FC, "", "Forward bias depletion capacitance coefficient. Default 0.5" },
-				{ "GLEAK", GLEAK, "", "Bottom junction leakage conductance" },
-				{ "IAVE", IAVE, "Amps", "Average current rating. Take from datasheet." },
-				{ "IKF", IKF, "Amps", "High-injection knee current. Current at the start of the knee." },
-
-				{
-						"ISR",
-						ISR,
-						"Amps",
-						"",
-						"Recombination current parameter. No known calculation from datasheet. Might be possible. See: http://www.uta.edu/ronc/5342/lectures/L12_5342_Sp11.ppt" },
-				{ "KF", KF, "", "Flicker noise coefficient kf." },
-				{ "NBV", NBV, "", "Reverse breakdown ideality factor. No known calculation from datasheet." },
-				{ "NR", NR, "", "Isr emissions coefficent. No known calculation from datasheet" },
-				{ "TRISE", TRISE, "Celcius", "Temperature rise over ambient" }
-
-		};
-
-		return new DefaultTableModel(data, parameters);
-	}
+	/**
+	 * IS temperature exponent pi
+	 */
+	private String XTI;
 
 	/*
 	 * (non-Javadoc)
@@ -342,6 +290,11 @@ public class Diode
 		return KF;
 	}
 
+	public Long getLINE()
+	{
+		return LINE;
+	}
+
 	/**
 	 * @return the m
 	 */
@@ -401,6 +354,57 @@ public class Diode
 	public String getRS()
 	{
 		return RS;
+	}
+
+	public TableModel getTableModel()
+	{
+
+		Object[][] data = {
+				{ ".Model", model, "", "The model of the diode" },
+				{ "MFG", MFG, "", "The manufacturer" },
+				{ "Type", type, "", "The diode type" },
+				{ "TNOM", TNOM, "°C", "The temperature which parameters are measured" },
+				{ "IPK", IPK, "Amps", "Peak forward current rating. Take fomr datasheet" },
+				{ "VPK", VPK, "Volts", "Peak forward voltage rating. Take from datasheet" },
+				{ "BV", BV, "Volts", "Reverse breakdown knee voltage. Datasheet VRM or Vbr (Vz for zener)" },
+				{ "CJO", CJO, "Farads", "Zero-bias p-n capacitance. Datasheet Cj or Ctot.  Calculator available." },
+				{ "IBV", IBV, "Amps", "Maximum leakage current. Datasheet ~10*Ir (or Ibr or Izk for zener)" },
+				{ "M", M, "",
+						"Range of .25 to .45. Low V zeners ~.25, 50-100V .33, <100V .45. Default .5.  Calculator available." },
+				{
+						"TT",
+						TT,
+						"Seconds",
+						"Transit time. (use ms, ns, us) ~τD =  QRR/IF (QRR=reverse recovery stored charge, IF=forward current. Calculator available." },
+				{ "EG", EG, "Electron Volt",
+						"standard value of 1.1 eV, while it's 0.7 eV for Schottky diode and 0.67 eV for germanium diodes." },
+				{ "N", N, "",
+						"The N value ranges between 1.0 and about 2.0. Adjust to match I-V curvature.  Calculator available." },
+				{ "IS", IS, "Amps", "Saturation current. Calculator available." },
+				{ "RS", RS, "Ohms", "Parasitic resistance. Calculator available." },
+				{ "VJ", VJ, "Volts", "Junction potential. Calculator available." },
+				{ "XTI", XTI, "", "IS temperature exponent. Calculator available." },
+				{ "AF", AF, "", "Default 1. No known calculation from datasheet." },
+				{ "DISS", DISS, "Watts", "Maximum power dissipation rating." },
+				{ "FC", FC, "", "Forward bias depletion capacitance coefficient. Default 0.5" },
+				{ "GLEAK", GLEAK, "", "Bottom junction leakage conductance" },
+				{ "IAVE", IAVE, "Amps", "Average current rating. Take from datasheet." },
+				{ "IKF", IKF, "Amps", "High-injection knee current. Current at the start of the knee." },
+
+				{
+						"ISR",
+						ISR,
+						"Amps",
+						"",
+						"Recombination current parameter. No known calculation from datasheet. Might be possible. See: http://www.uta.edu/ronc/5342/lectures/L12_5342_Sp11.ppt" },
+				{ "KF", KF, "", "Flicker noise coefficient kf." },
+				{ "NBV", NBV, "", "Reverse breakdown ideality factor. No known calculation from datasheet." },
+				{ "NR", NR, "", "Isr emissions coefficent. No known calculation from datasheet" },
+				{ "TRISE", TRISE, "Celcius", "Temperature rise over ambient" }
+
+		};
+
+		return new DefaultTableModel(data, parameters);
 	}
 
 	/**
@@ -508,7 +512,7 @@ public class Diode
 	 */
 	public final void setEG(final String eG)
 	{
-		this.EG = eG;
+		EG = eG;
 	}
 
 	/**
@@ -583,6 +587,11 @@ public class Diode
 		KF = kF;
 	}
 
+	public void setLINE(Long lINE)
+	{
+		LINE = lINE;
+	}
+
 	/**
 	 * @param m the m to set
 	 */
@@ -649,7 +658,7 @@ public class Diode
 	 */
 	public void setTNOM(String tNOM)
 	{
-		this.TNOM = tNOM;
+		TNOM = tNOM;
 	}
 
 	/**
@@ -657,7 +666,7 @@ public class Diode
 	 */
 	public final void setTRISE(String tRISE)
 	{
-		this.TRISE = tRISE;
+		TRISE = tRISE;
 	}
 
 	/**
@@ -665,7 +674,7 @@ public class Diode
 	 */
 	public final void setTT(String tT)
 	{
-		this.TT = tT;
+		TT = tT;
 	}
 
 	/**
@@ -681,7 +690,7 @@ public class Diode
 	 */
 	public void setVJ(String vJ)
 	{
-		this.VJ = vJ;
+		VJ = vJ;
 	}
 
 	/**
@@ -689,7 +698,7 @@ public class Diode
 	 */
 	public void setVPK(String vPK)
 	{
-		this.VPK = vPK;
+		VPK = vPK;
 	}
 
 	/**
@@ -697,7 +706,7 @@ public class Diode
 	 */
 	public final void setXTI(String xTI)
 	{
-		this.XTI = xTI;
+		XTI = xTI;
 	}
 
 	/*
@@ -713,151 +722,151 @@ public class Diode
 		{
 			builder.append("model=");
 			builder.append(model);
-			builder.append(TOSTRINGCOMMA);
+			builder.append(Diode.TOSTRINGCOMMA);
 		}
 		if (IS != null)
 		{
 			builder.append("IS=");
 			builder.append(IS);
-			builder.append(TOSTRINGCOMMA);
+			builder.append(Diode.TOSTRINGCOMMA);
 		}
 		if (RS != null)
 		{
 			builder.append("RS=");
 			builder.append(RS);
-			builder.append(TOSTRINGCOMMA);
+			builder.append(Diode.TOSTRINGCOMMA);
 		}
 		if (N != null)
 		{
 			builder.append("N=");
 			builder.append(N);
-			builder.append(TOSTRINGCOMMA);
+			builder.append(Diode.TOSTRINGCOMMA);
 		}
 		if (TT != null)
 		{
 			builder.append("TT=");
 			builder.append(TT);
-			builder.append(TOSTRINGCOMMA);
+			builder.append(Diode.TOSTRINGCOMMA);
 		}
 		if (CJO != null)
 		{
 			builder.append("CJO=");
 			builder.append(CJO);
-			builder.append(TOSTRINGCOMMA);
+			builder.append(Diode.TOSTRINGCOMMA);
 		}
 		if (VJ != null)
 		{
 			builder.append("VJ=");
 			builder.append(VJ);
-			builder.append(TOSTRINGCOMMA);
+			builder.append(Diode.TOSTRINGCOMMA);
 		}
 		if (M != null)
 		{
 			builder.append("M=");
 			builder.append(M);
-			builder.append(TOSTRINGCOMMA);
+			builder.append(Diode.TOSTRINGCOMMA);
 		}
 		if (EG != null)
 		{
 			builder.append("EG=");
 			builder.append(EG);
-			builder.append(TOSTRINGCOMMA);
+			builder.append(Diode.TOSTRINGCOMMA);
 		}
 		if (XTI != null)
 		{
 			builder.append("XTI=");
 			builder.append(XTI);
-			builder.append(TOSTRINGCOMMA);
+			builder.append(Diode.TOSTRINGCOMMA);
 		}
 		if (KF != null)
 		{
 			builder.append("KF=");
 			builder.append(KF);
-			builder.append(TOSTRINGCOMMA);
+			builder.append(Diode.TOSTRINGCOMMA);
 		}
 		if (AF != null)
 		{
 			builder.append("AF=");
 			builder.append(AF);
-			builder.append(TOSTRINGCOMMA);
+			builder.append(Diode.TOSTRINGCOMMA);
 		}
 		if (FC != null)
 		{
 			builder.append("FC=");
 			builder.append(FC);
-			builder.append(TOSTRINGCOMMA);
+			builder.append(Diode.TOSTRINGCOMMA);
 		}
 		if (BV != null)
 		{
 			builder.append("BV=");
 			builder.append(BV);
-			builder.append(TOSTRINGCOMMA);
+			builder.append(Diode.TOSTRINGCOMMA);
 		}
 		if (IBV != null)
 		{
 			builder.append("IBV=");
 			builder.append(IBV);
-			builder.append(TOSTRINGCOMMA);
+			builder.append(Diode.TOSTRINGCOMMA);
 		}
 		if (TNOM != null)
 		{
 			builder.append("TNOM=");
 			builder.append(TNOM);
-			builder.append(TOSTRINGCOMMA);
+			builder.append(Diode.TOSTRINGCOMMA);
 		}
 		if (IAVE != null)
 		{
 			builder.append("IAVE=");
 			builder.append(IAVE);
-			builder.append(TOSTRINGCOMMA);
+			builder.append(Diode.TOSTRINGCOMMA);
 		}
 		if (VPK != null)
 		{
 			builder.append("VPK=");
 			builder.append(VPK);
-			builder.append(TOSTRINGCOMMA);
+			builder.append(Diode.TOSTRINGCOMMA);
 		}
 		if (IPK != null)
 		{
 			builder.append("IPK=");
 			builder.append(IPK);
-			builder.append(TOSTRINGCOMMA);
+			builder.append(Diode.TOSTRINGCOMMA);
 		}
 		if (NBV != null)
 		{
 			builder.append("NBV=");
 			builder.append(NBV);
-			builder.append(TOSTRINGCOMMA);
+			builder.append(Diode.TOSTRINGCOMMA);
 		}
 		if (NR != null)
 		{
 			builder.append("NR=");
 			builder.append(NR);
-			builder.append(TOSTRINGCOMMA);
+			builder.append(Diode.TOSTRINGCOMMA);
 		}
 		if (IKF != null)
 		{
 			builder.append("IKF=");
 			builder.append(IKF);
-			builder.append(TOSTRINGCOMMA);
+			builder.append(Diode.TOSTRINGCOMMA);
 		}
 		if (ISR != null)
 		{
 			builder.append("ISR=");
 			builder.append(ISR);
-			builder.append(TOSTRINGCOMMA);
+			builder.append(Diode.TOSTRINGCOMMA);
 		}
 		if (DISS != null)
 		{
 			builder.append("DISS=");
 			builder.append(DISS);
-			builder.append(TOSTRINGCOMMA);
+			builder.append(Diode.TOSTRINGCOMMA);
 		}
 		if (TRISE != null)
 		{
 			builder.append("TRISE=");
 			builder.append(TRISE);
-			builder.append(TOSTRINGCOMMA);
+			builder.append(Diode.TOSTRINGCOMMA);
 		}
 		if (GLEAK != null)
 		{
@@ -868,26 +877,16 @@ public class Diode
 		{
 			builder.append("MFG=");
 			builder.append(MFG);
-			builder.append(TOSTRINGCOMMA);
+			builder.append(Diode.TOSTRINGCOMMA);
 		}
 		if (type != null)
 		{
 			builder.append("type=");
 			builder.append(type);
-			builder.append(TOSTRINGCOMMA);
+			builder.append(Diode.TOSTRINGCOMMA);
 		}
 
 		builder.append(']');
 		return builder.toString();
-	}
-
-	public Long getLINE()
-	{
-		return LINE;
-	}
-
-	public void setLINE(Long lINE)
-	{
-		LINE = lINE;
 	}
 }
