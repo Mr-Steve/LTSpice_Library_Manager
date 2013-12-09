@@ -25,11 +25,6 @@ public class MathMain
 	 */
 	public static final double EPSILON = 1.0e-20;
 
-	public MathMain()
-	{
-		super();
-	}
-
 	public static double calculateThermalVoltage(double TempCelsius)
 	{
 		Measure<Double, Temperature> temp = Measure.valueOf(TempCelsius, SI.CELSIUS);
@@ -37,7 +32,7 @@ public class MathMain
 		Amount<? extends Quantity> Top = Constants.k.to(NonSI.ELECTRON_VOLT.divide(SI.KELVIN)).times(val);
 		Amount<? extends Quantity> Result = Top.divide(Constants.e.doubleValue(NonSI.E));
 		return Result.getEstimatedValue();
-	
+
 		// Amount<ElectricPotential> taco = asdf.to(VOLT);
 		// Amount<?> top =
 		// org.jscience.physics.amount.Constants.k.to(ELECTRON_VOLT.divide(KELVIN));
@@ -51,7 +46,7 @@ public class MathMain
 	public static double convertCelsiusToKelvin(double TempCelsius)
 	{
 		Measure<Double, Temperature> temp = Measure.valueOf(TempCelsius, SI.CELSIUS);
-	
+
 		return temp.intValue(SI.KELVIN);
 	}
 
@@ -60,7 +55,7 @@ public class MathMain
 		// double val = Double.valueOf(text);
 		// return Double.toString(val);
 		return new BigDecimal(text).toPlainString();
-	
+
 	}
 
 	public static List<String> metricConvert(double val)
@@ -76,13 +71,13 @@ public class MathMain
 			result.add(value.to(SI.MICRO(SI.FARAD)).toString());
 			result.add(value.to(SI.NANO(SI.FARAD)).toString());
 			result.add(value.to(SI.PICO(SI.FARAD)).toString());
-	
+
 			// value.UNIT.transform(FARAD.getConverterTo(NANO(FARAD)));
 		}
-	
+
 		// UnitConverter toMicro = FARAD.toStandardUnit();
 		return result;
-	
+
 	}
 
 	public static double metricToMicro(double input)
@@ -118,7 +113,7 @@ public class MathMain
 		result.add(value.toString());
 		result.add(value.to(SI.NANO(SI.FARAD)).toString());
 		result.add(value.to(SI.PICO(SI.FARAD)).toString());
-	
+
 		return result;
 	}
 
@@ -137,7 +132,7 @@ public class MathMain
 		result.add(value.to(SI.MICRO(SI.FARAD)).toString());
 		result.add(value.to(SI.NANO(SI.FARAD)).toString());
 		result.add(value.to(SI.PICO(SI.FARAD)).toString());
-	
+
 		return result;
 	}
 
@@ -156,7 +151,7 @@ public class MathMain
 		result.add(value.to(SI.MICRO(SI.FARAD)).toString());
 		result.add(value.toString());
 		result.add(value.to(SI.PICO(SI.FARAD)).toString());
-	
+
 		return result;
 	}
 
@@ -175,7 +170,7 @@ public class MathMain
 		result.add(value.to(SI.MICRO(SI.FARAD)).toString());
 		result.add(value.to(SI.NANO(SI.FARAD)).toString());
 		result.add(value.toString());
-	
+
 		return result;
 	}
 
@@ -183,6 +178,11 @@ public class MathMain
 	{
 		Measure<Double, ElectricCapacitance> value = Measure.valueOf(input, SI.PICO(SI.FARAD));
 		return value.doubleValue(SI.FARAD);
+	}
+
+	public MathMain()
+	{
+		super();
 	}
 
 }
