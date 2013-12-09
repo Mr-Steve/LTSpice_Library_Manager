@@ -5,27 +5,23 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.attribute.FileAttribute;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
-import org.jfree.chart.util.AttrStringUtils;
 
 public class ProcessFile implements Runnable
 {
 
 	private static final Charset ENCODING = StandardCharsets.UTF_8;
 
-	private static final String sciRegEx = "\\d{0,}.{0,1}\\d{1,}[eE]-{0,1}\\d{1,}";
+	static Path file;
 
 	private static int libType;
-	
-	private static void saveFile(Path path)
-	{
-		
-	}
-	
+
+	private static final String sciRegEx = "\\d{0,}.{0,1}\\d{1,}[eE]-{0,1}\\d{1,}";
+
+	static Path workingFile;
+
 	private static boolean formatFile(Path path)
 	{
 		boolean temp = false;
@@ -36,9 +32,9 @@ public class ProcessFile implements Runnable
 			if (temp)
 			{
 				text = text.replaceAll("\n+", " ");
-			//text = text.replaceAll(" .model", ".model");
-				workingFile = Files.createTempFile("", ".tmp");
-				Files.write(workingFile, text.getBytes());
+				// text = text.replaceAll(" .model", ".model");
+				ProcessFile.workingFile = Files.createTempFile("", ".tmp");
+				Files.write(ProcessFile.workingFile, text.getBytes());
 			}
 		}
 		catch (IOException e)
@@ -47,16 +43,16 @@ public class ProcessFile implements Runnable
 			e.printStackTrace();
 		}
 		return temp;
-		
+
 	}
-	
+
 	private static String formatLine(String text)
 	{
 		String holder = text;
 		// Diode formatting
 		if (text.contains(" D ("))
 		{
-            holder = text.replace(" D (", " D(");
+			holder = text.replace(" D (", " D(");
 		}
 		// Transistor formatting
 		else if (text.contains(" NPN ("))
@@ -98,7 +94,7 @@ public class ProcessFile implements Runnable
 	 */
 	public static int getLibType()
 	{
-		return libType;
+		return ProcessFile.libType;
 	}
 
 	private static Bipolar procBjt(String text, Long line)
@@ -116,12 +112,12 @@ public class ProcessFile implements Runnable
 		holder = holder.replace("NPN(", "");
 		holder = holder.replace("PNP(", "");
 		holder = holder.replace(")", "");
-        String[] array = holder.split(" |=");
-        for (int i = 0; i + 1 < array.length; i += 2)
+		String[] array = holder.split(" |=");
+		for (int i = 0; i + 1 < array.length; i += 2)
 		{
-			if (array[i + 1].matches(sciRegEx) && i != 0)
+			if (array[i + 1].matches(ProcessFile.sciRegEx) && i != 0)
 			{
-				array[i + 1] = MathDio.convertSciNot(array[i + 1]);
+				array[i + 1] = MathMain.convertSciNot(array[i + 1]);
 			}
 
 			switch (array[i].toLowerCase())
@@ -273,26 +269,26 @@ public class ProcessFile implements Runnable
 		holder = holder.replace("D(", "");
 		holder = holder.replace(")", "");
 		holder = holder.replaceAll("  ", " ");
-		//holder = holder.replace(" .model", ".model");
-        String[] array = holder.split(" |=");
-        for (int i = 0; i + 1 < array.length; i += 2)
+		// holder = holder.replace(" .model", ".model");
+		String[] array = holder.split(" |=");
+		for (int i = 0; i + 1 < array.length; i += 2)
 		{
-			if (array[i + 1].matches(sciRegEx))
+			if (array[i + 1].matches(ProcessFile.sciRegEx))
 			{
-				array[i + 1] = MathDio.convertSciNot(array[i + 1]);
+				array[i + 1] = MathMain.convertSciNot(array[i + 1]);
 			}
 
 			switch (array[i].toLowerCase())
 				{
-				case "":
-					if (i == 0)
-					{
-						i -= 1;
-					}
-					
-					break;
+					case "":
+						if (i == 0)
+						{
+							i -= 1;
+						}
+
+						break;
 					case ".model":
-						dio.setModel( array[i + 1]);
+						dio.setModel(array[i + 1]);
 						break;
 					case "is":
 						dio.setIS(array[i + 1]);
@@ -375,8 +371,8 @@ public class ProcessFile implements Runnable
 					case "type":
 						dio.setType(array[i + 1]);
 						break;
-                    default:
-                        break;
+					default:
+						break;
 				}
 
 		}
@@ -394,10 +390,10 @@ public class ProcessFile implements Runnable
 		holder = holder.replace("NJF(", "");
 		holder = holder.replace("PJF(", "");
 		holder = holder.replace(")", "");
-        String[] array = holder.split(" |=");
-        for (int i = 0; i + 1 < array.length; i += 2)
+		String[] array = holder.split(" |=");
+		for (int i = 0; i + 1 < array.length; i += 2)
 		{
-			if (array[i + 1].matches(sciRegEx))
+			if (array[i + 1].matches(ProcessFile.sciRegEx))
 			{
 				array[i + 1] = MathMain.convertSciNot(array[i + 1]);
 			}
@@ -405,23 +401,28 @@ public class ProcessFile implements Runnable
 			switch (array[i].toLowerCase())
 				{
 					case ".model":
-						jfet.setModel( array[i + 1]);
+						jfet.setModel(array[i + 1]);
 						break;
-                    default:
-                        break;
+					default:
+						break;
 				}
 		}
-			
+
 		return jfet;
 	}
-	
+
 	private static Mosfet procMosfet(String text, Long line)
 	{
 		Mosfet mosfet = new Mosfet();
-		
+
 		return mosfet;
 	}
-	
+
+	private static void saveFile(Path path)
+	{
+
+	}
+
 	/**
 	 * @param libType the libType to set
 	 */
@@ -430,29 +431,25 @@ public class ProcessFile implements Runnable
 		ProcessFile.libType = libType;
 	}
 
-	Scanner scanner;
+	List<Bipolar> bjtList;
 
 	List<Diode> dioList;
-
-	List<Bipolar> bjtList;
 
 	List<Jfet> jfetList;
 
 	List<Mosfet> mosList;
 
-	static Path file;
-	
-	static Path workingFile;
+	Scanner scanner;
 
 	public ProcessFile()
 	{
-        new MathDio();
+		new MathDio();
 	}
 
 	public ProcessFile(Path path)
 	{
-		file = path;
-		
+		ProcessFile.file = path;
+
 	}
 
 	/**
@@ -498,41 +495,41 @@ public class ProcessFile implements Runnable
 		boolean formatted = false;
 		try
 		{
-			formatted = formatFile(file);
+			formatted = ProcessFile.formatFile(ProcessFile.file);
 			if (formatted == true)
 			{
-				scanner = new Scanner(workingFile, ENCODING.name());
+				scanner = new Scanner(ProcessFile.workingFile, ProcessFile.ENCODING.name());
 			}
 			else
 			{
-				scanner = new Scanner(file, ENCODING.name());
+				scanner = new Scanner(ProcessFile.file, ProcessFile.ENCODING.name());
 			}
-			
+
 			long lineNumber = 0;
 			String text = "";
 			while (scanner.hasNextLine())
 			{
 				lineNumber += 1;
-				text = formatLine(scanner.nextLine());
+				text = ProcessFile.formatLine(scanner.nextLine());
 				if (text.contains(" D("))
 				{
-					setLibType(0);
-					dioList.add(procDiode(text, lineNumber));
+					ProcessFile.setLibType(0);
+					dioList.add(ProcessFile.procDiode(text, lineNumber));
 				}
 				else if ((text.contains(" NPN(") || text.contains(" PNP(")) && !text.contains("ako:"))
 				{
-					setLibType(1);
-					bjtList.add(procBjt(text, lineNumber));
+					ProcessFile.setLibType(1);
+					bjtList.add(ProcessFile.procBjt(text, lineNumber));
 				}
 				else if (text.contains(" NJF(") || text.contains(" PJF("))
 				{
-					setLibType(2);
-					jfetList.add(procJfet(text, lineNumber));
+					ProcessFile.setLibType(2);
+					jfetList.add(ProcessFile.procJfet(text, lineNumber));
 				}
 				else if (text.contains(" VDMOS(") || text.contains(" NMOS(") || text.contains(" PMOS("))
 				{
-					setLibType(3);
-					mosList.add(procMosfet(text, lineNumber));
+					ProcessFile.setLibType(3);
+					mosList.add(ProcessFile.procMosfet(text, lineNumber));
 				}
 			}
 		}
